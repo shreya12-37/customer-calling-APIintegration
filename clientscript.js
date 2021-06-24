@@ -30,6 +30,10 @@ frappe.ui.form.on('Lead', {
                     console.log(customer_no);
                     frappe.db.get_value("User", "shreyamaheshwari3712@gmail.com", "phone").done(function(result) {
                         let user_no = result.message.phone;
+                        if (result.message.phone===""){
+                                frappe.show_alert("Invalid user number, update your number in user list");
+                                return;
+                            }
                         frappe.call({
                             method: "customer-calling",
                             args: {
